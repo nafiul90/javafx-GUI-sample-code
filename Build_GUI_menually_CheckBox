@@ -1,0 +1,83 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package listview;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+/**
+ *
+ * @author nafiul
+ */
+public class checkboxlearning extends Application{
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        HBox hbox=new HBox();
+        hbox.setMinHeight(300);
+        hbox.setMinWidth(300);
+        
+        VBox vbox1=new VBox();
+        vbox1.setMinWidth(200);
+        VBox vbox2=new VBox();
+        vbox1.setMinWidth(200);
+        
+        Label lbl1=new Label("all fruits");
+        Label lbl2=new Label("selected Fruits");
+        
+        CheckBox c1=new CheckBox("apple");
+        CheckBox c2=new CheckBox("orange");
+        CheckBox c3=new CheckBox("banana");
+        CheckBox c4=new CheckBox("lichi");
+        
+        
+        vbox1.getChildren().addAll(lbl1,c1,c2,c3,c4);
+        vbox2.getChildren().addAll(lbl2);
+        
+        c1.setOnAction(e->checkBoxAction(c1,vbox1,vbox2));
+        c2.setOnAction(e->checkBoxAction(c2,vbox1,vbox2));
+        c3.setOnAction(e->checkBoxAction(c3,vbox1,vbox2));
+        c4.setOnAction(e->checkBoxAction(c4,vbox1,vbox2));
+        
+        hbox.getChildren().addAll(vbox1,vbox2);
+        
+        Scene scene=new Scene(hbox);
+        primaryStage.setScene(scene);
+        
+        primaryStage.show();
+        
+    
+    }
+    
+    void checkBoxAction(CheckBox c,VBox vbox1,VBox vbox2){
+        
+        if(c.isSelected())
+            vbox2.getChildren().add(c);
+        
+        else if(!c.isSelected())
+            vbox1.getChildren().add(c);
+        
+    }
+    
+    
+    
+}
